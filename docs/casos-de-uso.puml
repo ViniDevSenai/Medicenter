@@ -1,0 +1,56 @@
+@startuml Medicenter - Casos de uso
+left to right direction
+skinparam actorStyle awesome
+
+actor "Paciente" as Pac
+actor "Funcionário" as Func
+actor "Médico" as Med
+actor "Administrador" as Adm
+
+Adm -|> Func
+
+rectangle "Medicenter" {
+  usecase "Fazer login" as UC01
+  usecase "Cadastrar-se (sem acesso)" as UC02
+  usecase "Alterar senha" as UC03
+  usecase "Manter pacientes" as UC04
+  usecase "Manter médicos" as UC05
+  usecase "Manter funcionários" as UC06
+  usecase "Manter especialidades" as UC07
+  usecase "Agendar consulta" as UC08
+  usecase "Confirmar / cancelar consulta" as UC09
+  usecase "Consultar agenda" as UC10
+  usecase "Registrar atendimento" as UC11
+  usecase "Consultar prontuário" as UC12
+  usecase "Atualizar dados clínicos" as UC13
+  usecase "Verificar conflito de horário" as UC14
+}
+
+Pac --> UC02
+Pac --> UC01
+Pac --> UC03
+Pac --> UC08
+Pac --> UC09
+Pac --> UC10
+
+Func --> UC01
+Func --> UC03
+Func --> UC04
+Func --> UC08
+Func --> UC09
+Func --> UC10
+
+Adm --> UC05
+Adm --> UC06
+Adm --> UC07
+
+Med --> UC01
+Med --> UC03
+Med --> UC10
+Med --> UC11
+Med --> UC12
+Med --> UC13
+
+UC08 ..> UC14 : <<include>>
+UC11 ..> UC12 : <<include>>
+@enduml

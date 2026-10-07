@@ -1,13 +1,14 @@
+-- =========================================================
 -- MEDICENTER - Script de criação do banco
 -- MySQL 8.0+
-
+-- =========================================================
 DROP DATABASE IF EXISTS medicenter;
 CREATE DATABASE medicenter
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 USE medicenter;
 
--- USUARIO: login de acesso de qualquer perfil
+-- 1. USUARIO: login de acesso de qualquer perfil
 CREATE TABLE usuario (
   id_usuario     INT AUTO_INCREMENT PRIMARY KEY,
   login          VARCHAR(100) NOT NULL,
@@ -19,14 +20,14 @@ CREATE TABLE usuario (
   CONSTRAINT uq_usuario_login UNIQUE (login)
 ) ENGINE=InnoDB;
 
---  ESPECIALIDADE
+-- 2. ESPECIALIDADE
 CREATE TABLE especialidade (
   id_especialidade INT AUTO_INCREMENT PRIMARY KEY,
   nome             VARCHAR(80) NOT NULL,
   CONSTRAINT uq_especialidade_nome UNIQUE (nome)
 ) ENGINE=InnoDB;
 
--- PACIENTE
+-- 3. PACIENTE
 CREATE TABLE paciente (
   id_paciente      INT AUTO_INCREMENT PRIMARY KEY,
   id_usuario       INT          NULL,
@@ -50,7 +51,7 @@ CREATE TABLE paciente (
     REFERENCES usuario (id_usuario) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
--- MEDICO
+-- 4. MEDICO
 CREATE TABLE medico (
   id_medico         INT AUTO_INCREMENT PRIMARY KEY,
   id_usuario        INT          NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE medico (
     REFERENCES especialidade (id_especialidade)
 ) ENGINE=InnoDB;
 
--- FUNCIONARIO
+-- 5. FUNCIONARIO
 CREATE TABLE funcionario (
   id_funcionario  INT AUTO_INCREMENT PRIMARY KEY,
   id_usuario      INT          NOT NULL,
@@ -90,7 +91,7 @@ CREATE TABLE funcionario (
     REFERENCES usuario (id_usuario)
 ) ENGINE=InnoDB;
 
--- CONSULTA (agendamento)
+-- 6. CONSULTA (agendamento)
 --    horario_ativo fica NULL quando a consulta é cancelada ou o paciente falta,
 --    liberando o horário para um novo agendamento.
 CREATE TABLE consulta (
@@ -117,7 +118,7 @@ CREATE TABLE consulta (
 CREATE INDEX idx_consulta_data     ON consulta (data_hora);
 CREATE INDEX idx_consulta_paciente ON consulta (id_paciente);
 
--- PRONTUARIO (um por paciente)
+-- 7. PRONTUARIO (um por paciente)
 CREATE TABLE prontuario (
   id_prontuario    INT AUTO_INCREMENT PRIMARY KEY,
   id_paciente      INT      NOT NULL,
@@ -131,7 +132,7 @@ CREATE TABLE prontuario (
     REFERENCES paciente (id_paciente) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- PRONTUARIO_REGISTRO (evolução de cada consulta)
+-- 8. PRONTUARIO_REGISTRO (evolução de cada consulta)
 CREATE TABLE prontuario_registro (
   id_registro     INT AUTO_INCREMENT PRIMARY KEY,
   id_prontuario   INT      NOT NULL,

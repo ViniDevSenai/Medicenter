@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Forms\FrmAlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmAtendimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmConsultaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmFuncionarioEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmMedicoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmPacienteEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmProntuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\FrmEdicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\FrmLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
